@@ -9,7 +9,7 @@ require('zone.js/dist/long-stack-trace-zone');
 
 export const environment: Environment = {
   // project origin
-  origin: 'http://origin',
+  origin: 'http://origin-dev/',
   production: false,
   showDevModule: true,
 

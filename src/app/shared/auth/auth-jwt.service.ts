@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
 import { YunXinService } from '../yunxin/yunxin.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthServerProvider {
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private $localStorage: LocalStorageService,
     private $sessionStorage: SessionStorageService,
   ) { }
@@ -24,16 +24,16 @@ export class AuthServerProvider {
     data.append('username', credentials.username);
     data.append('password', credentials.password);
     data.append('scope', 'web');
-    const headers = new Headers({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic d2ViX2FwcDo='
     });
 
-    return this.http.post('esenuaa/oauth/token', data, {
+    return this.http.post('', data, {
       headers
-    }).map((resp) => {
+    }).map((res) => {
       // 获取返回的token值
-      const accessToken = resp.json()['access_token'];
+      const accessToken = res['access_token'];
       if (accessToken) {
         this.storeAuthenticationToken(accessToken, credentials.rememberMe);
       }

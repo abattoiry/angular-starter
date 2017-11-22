@@ -6,6 +6,7 @@ import { Environment } from './model';
 enableProdMode();
 
 export const environment: Environment = {
+  origin: 'http://origin-prod',
   production: true,
   showDevModule: false,
 

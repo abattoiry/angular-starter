@@ -60,7 +60,8 @@ module.exports = function (env) {
   METADATA.envFileSuffix = METADATA.E2E ? 'e2e.prod' : 'prod';
 
   return webpackMerge(commonConfig({ env: ENV, metadata: METADATA }), {
-
+    devtool: 'inline-source-map',
+    
     /**
      * Options affecting the output of the compilation.
      *

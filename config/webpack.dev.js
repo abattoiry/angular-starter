@@ -34,6 +34,8 @@ module.exports = function (options) {
   });
 
   return webpackMerge(commonConfig({ env: ENV, metadata: METADATA  }), {
+    devtool: 'inline-source-map',
+    
     /**
      * Options affecting the output of the compilation.
      *

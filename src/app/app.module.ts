@@ -22,10 +22,10 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
-import { UserRouteAccessService } from './shared/auth/user-route-access-service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { SharedModule } from './shared/shared.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -65,7 +65,8 @@ type StoreType = {
       preloadingStrategy: PreloadAllModules
     }),
     // above are from original project
-    Ng2Webstorage.forRoot({ prefix: 'esen', separator: '-'}),
+    Ng2Webstorage.forRoot({ prefix: 'connext', separator: '-'}),
+    SharedModule,
     /**
      * This section will import the `DevModuleModule` only in certain build types.
      * When the module is not imported it will get tree shaked.
@@ -80,7 +81,6 @@ type StoreType = {
     environment.ENV_PROVIDERS,
     APP_PROVIDERS,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    UserRouteAccessService,
   ]
 })
 export class AppModule {}
