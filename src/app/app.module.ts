@@ -22,6 +22,9 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import { UserRouteAccessService } from './shared/auth/user-route-access-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth/auth.interceptor';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -72,7 +75,9 @@ type StoreType = {
    */
   providers: [
     environment.ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    UserRouteAccessService,
   ]
 })
 export class AppModule {}
