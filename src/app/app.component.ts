@@ -4,6 +4,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
 import { AppState } from './app.service';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * App Component
@@ -45,6 +46,7 @@ import { AppState } from './app.service';
 
     <main>
       <router-outlet></router-outlet>
+      <button (click)="testHttpInterceptor()">test http interceptor</button>
     </main>
 
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
@@ -67,11 +69,16 @@ export class AppComponent implements OnInit {
   public showDevModule: boolean = environment.showDevModule;
 
   constructor(
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    private http: HttpClient,
+  ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+  }
+
+  testHttpInterceptor() {
+    this.http.get('test').subscribe();
   }
 
 }

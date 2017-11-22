@@ -23,8 +23,9 @@ import { DevModuleModule } from './+dev-module';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import { UserRouteAccessService } from './shared/auth/user-route-access-service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
+import { Ng2Webstorage } from 'ng2-webstorage';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -58,11 +59,13 @@ type StoreType = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
-
+    // above are from original project
+    Ng2Webstorage.forRoot({ prefix: 'esen', separator: '-'}),
     /**
      * This section will import the `DevModuleModule` only in certain build types.
      * When the module is not imported it will get tree shaked.
