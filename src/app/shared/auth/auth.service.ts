@@ -5,7 +5,7 @@ import { YunXinService } from '../yunxin/yunxin.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class AuthServerProvider {
+export class AuthService {
   constructor(
     private http: HttpClient,
     private $localStorage: LocalStorageService,
@@ -16,7 +16,7 @@ export class AuthServerProvider {
     return this.$localStorage.retrieve('authenticationToken') ||
       this.$sessionStorage.retrieve('authenticationToken');
   }
-  // 登录
+
   login(credentials): Observable<any> {
 
     const data = new URLSearchParams();
@@ -32,7 +32,6 @@ export class AuthServerProvider {
     return this.http.post('', data, {
       headers
     }).map((res) => {
-      // 获取返回的token值
       const accessToken = res['access_token'];
       if (accessToken) {
         this.storeAuthenticationToken(accessToken, credentials.rememberMe);
