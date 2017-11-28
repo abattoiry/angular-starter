@@ -214,7 +214,7 @@ export class GLobalService {
           'itccasInquiry': '/businesscenter/itc-header-enquiry',
           'itccasDetailInquiry': '/businesscenter/itc/cas'
         }
-      }
+      };
     }
   }
 

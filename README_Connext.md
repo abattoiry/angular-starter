@@ -12,6 +12,7 @@
       - [UserRouteAccessService(user-route-access-service.ts)](#userrouteaccessserviceuser-route-access-servicets)
     - [Global](#global)
       - [GlobalInterceptor(global.interceptor.ts)](#globalinterceptorglobalinterceptorts)
+      - [GlobalService(global.service.ts)](#globalserviceglobalservicets)
     - [Components](#components)
       - [atoms(Folder)](#atomsfolder)
       - [molecules(Folder)](#moleculesfolder)
@@ -72,7 +73,7 @@ AuthService provides functions releted to Auth, such as login, logout.
 
 #### AuthInterceptor(auth.interceptor.ts)
 
-Intercepts every request and inject authorization info into it's header.
+AuthInterceptor intercepts every request and inject authorization info into it's header.
 
 #### UserRouteAccessService(user-route-access-service.ts)
 
@@ -98,12 +99,17 @@ angular-starter/
 │   └──src/
 │       └── app
 │           └── shared
-│               └── global.interceptor.ts
+│               ├── global.interceptor.ts
+│               └── global.service.ts
 ```
 
 #### GlobalInterceptor(global.interceptor.ts)
 
-Intercepts and manufactures every request, such as add origin url.
+GlobalInterceptor intercepts and manufactures every request, such as insert origin url.
+
+#### GlobalService(global.service.ts)
+
+GlobalService consist of many utility functions that can be used globally, such as download file, key value pair. Feel free to add more services.
 
 ### Components
 

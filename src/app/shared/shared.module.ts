@@ -5,6 +5,7 @@ import { CSRFService } from './auth/csrf.service';
 import { PrincipalService } from 'app/shared/auth/principal.service';
 import { StateStorageService } from 'app/shared/auth/state-storage.service';
 import { UserRouteAccessService } from './auth/user-route-access-service';
+import { GLobalService } from 'app/shared/global.service';
 
 @NgModule({
   imports: [],
@@ -17,6 +18,7 @@ import { UserRouteAccessService } from './auth/user-route-access-service';
     PrincipalService,
     StateStorageService,
     UserRouteAccessService,
+    GLobalService,
   ],
 })
 export class SharedModule { }
