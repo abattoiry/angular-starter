@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -26,6 +25,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { SharedModule } from './shared/shared.module';
+import { GlobalInterceptor } from 'app/shared/global.interceptor';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -80,6 +80,7 @@ type StoreType = {
   providers: [
     environment.ENV_PROVIDERS,
     APP_PROVIDERS,
+    { provide: HTTP_INTERCEPTORS, useClass: GlobalInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ]
 })

@@ -8,7 +8,6 @@ import {
 import { AuthService } from './auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { LocalStorageService, SessionStorageService } from 'ng2-webstorage';
-import { environment } from 'environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -24,7 +23,6 @@ export class AuthInterceptor implements HttpInterceptor {
       this.sessionStorage.retrieve('authenticationToken');
 
     request = request.clone({
-      url: environment.origin + request.url,
       headers: request.headers.set('Authorization', `Bearer ${token}`)
     });
 

@@ -10,6 +10,12 @@
       - [AuthService(auth.service.ts)](#authserviceauthservicets)
       - [AuthInterceptor(auth.interceptor.ts)](#authinterceptorauthinterceptorts)
       - [UserRouteAccessService(user-route-access-service.ts)](#userrouteaccessserviceuser-route-access-servicets)
+    - [Global](#global)
+      - [GlobalInterceptor(global.interceptor.ts)](#globalinterceptorglobalinterceptorts)
+    - [Components](#components)
+      - [atoms(Folder)](#atomsfolder)
+      - [molecules(Folder)](#moleculesfolder)
+      - [organisms(Folder)](#organismsfolder)
 
 ## Overview
 
@@ -66,11 +72,11 @@ AuthService provides functions releted to Auth, such as login, logout.
 
 #### AuthInterceptor(auth.interceptor.ts)
 
-Intercepting every request and inject authorization info into it's header.
+Intercepts every request and inject authorization info into it's header.
 
 #### UserRouteAccessService(user-route-access-service.ts)
 
-UserRouteAccessService is used in every .routes.ts file, to provide required "canActive" service.
+UserRouteAccessService is used in every .routes.ts file, to provide required "canActive" service. For example:
 
 <pre>
 export const routes = [
@@ -84,3 +90,60 @@ export const routes = [
   },
 ];
 </pre>
+
+### Global
+
+```bash
+angular-starter/
+│   └──src/
+│       └── app
+│           └── shared
+│               └── global.interceptor.ts
+```
+
+#### GlobalInterceptor(global.interceptor.ts)
+
+Intercepts and manufactures every request, such as add origin url.
+
+### Components
+
+Components module contains many cutomized component, inspired by [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/).
+
+```bash
+angular-starter/
+│   └──src/
+│       └── app
+│           └── shared
+│              └── components
+│                 ├── atoms
+│                 │   ├── atoms.module.ts
+│                 │   ├── buttons
+│                 │   ├── icons
+│                 │   ├── images
+│                 │   └── links
+│                 ├── molecules
+│                 │   ├── calendar
+│                 │   ├── carousel
+│                 │   ├── molecules.module.ts
+│                 │   └── popup
+│                 └── organisms
+│                     ├── footer
+│                     ├── header
+│                     ├── menu
+│                     └── organisms.module.ts
+```
+
+#### atoms(Folder)
+
+In the words of Brad Frost:
+> If atoms are the basic building blocks of matter, then the atoms of our interfaces serve as the foundational building blocks that comprise all our user interfaces. These atoms include basic HTML elements like form labels, inputs, buttons, and others that can’t be broken down any further without ceasing to be functional.
+
+#### molecules(Folder)
+
+In the words of Brad Frost:
+> In interfaces, molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search input, and button can join together to create a search form molecule.
+
+#### organisms(Folder)
+
+In the words of Brad Frost:
+> Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms. These organisms form distinct sections of an interface.
