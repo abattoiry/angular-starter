@@ -6,17 +6,24 @@
     - [Keep your folk synced](#keep-your-folk-synced)
   - [Modules](#modules)
     - [Authorization](#authorization)
+      - [File Structure](#file-structure)
       - [AccountService(account.service.ts)](#accountserviceaccountservicets)
       - [AuthService(auth.service.ts)](#authserviceauthservicets)
       - [AuthInterceptor(auth.interceptor.ts)](#authinterceptorauthinterceptorts)
       - [UserRouteAccessService(user-route-access-service.ts)](#userrouteaccessserviceuser-route-access-servicets)
     - [Global](#global)
+      - [File Structure](#file-structure)
       - [GlobalInterceptor(global.interceptor.ts)](#globalinterceptorglobalinterceptorts)
       - [GlobalService(global.service.ts)](#globalserviceglobalservicets)
     - [Components](#components)
+      - [File Structure](#file-structure)
       - [atoms(Folder)](#atomsfolder)
       - [molecules(Folder)](#moleculesfolder)
       - [organisms(Folder)](#organismsfolder)
+    - [Styles](#styles)
+      - [File Structure](#file-structure)
+      - [Styles(styles.scss)](#stylesstylesscss)
+      - [Variables(_variables.scss)](#variablesvariablesscss)
 
 ## Overview
 
@@ -46,9 +53,11 @@ git remote -v
 
 ### Authorization
 
+#### File Structure
+
 ```bash
-angular-starter/
-│   └──src/
+angular-starter
+│   └──src
 │       └── app
 │           └── shared
 │               ├── auth
@@ -94,9 +103,11 @@ export const routes = [
 
 ### Global
 
+#### File Structure
+
 ```bash
-angular-starter/
-│   └──src/
+angular-starter
+│   └──src
 │       └── app
 │           └── shared
 │               ├── global.interceptor.ts
@@ -109,15 +120,17 @@ GlobalInterceptor intercepts and manufactures every request, such as insert orig
 
 #### GlobalService(global.service.ts)
 
-GlobalService consist of many utility functions that can be used globally, such as download file, key value pair. Feel free to add more services.
+GlobalService consist of many utility functions that can be used globally, such as download file, key value pair. Feel free to add more functions.
 
 ### Components
 
 Components module contains many cutomized component, inspired by [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/).
 
+#### File Structure
+
 ```bash
-angular-starter/
-│   └──src/
+angular-starter
+│   └──src
 │       └── app
 │           └── shared
 │              └── components
@@ -153,3 +166,24 @@ In the words of Brad Frost:
 
 In the words of Brad Frost:
 > Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms. These organisms form distinct sections of an interface.
+
+### Styles
+
+#### File Structure
+
+```bash
+angular-starter
+│   └──src
+│       └── styles
+│           ├── _variables.scss
+│           ├── headings.css
+│           └── styles.scss
+```
+
+#### Styles(styles.scss)
+
+Global styles.
+
+#### Variables(_variables.scss)
+
+Variables of global styles.
