@@ -26,6 +26,8 @@ import { AuthInterceptor } from './shared/auth/auth.interceptor';
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { SharedModule } from './shared/shared.module';
 import { GlobalInterceptor } from 'app/shared/global.interceptor';
+import { HeadersModule } from './headers/headers.module';
+import { HEADERROUTES } from 'app/headers/headers.routes';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -38,6 +40,11 @@ type StoreType = {
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };
+
+const routes = [
+  ...HEADERROUTES,
+  ...ROUTES,
+];
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -60,13 +67,14 @@ type StoreType = {
     FormsModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, {
+    RouterModule.forRoot(routes, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
     }),
     // above are from original project
     Ng2Webstorage.forRoot({ prefix: 'connext', separator: '-'}),
     SharedModule,
+    HeadersModule,
     /**
      * This section will import the `DevModuleModule` only in certain build types.
      * When the module is not imported it will get tree shaked.

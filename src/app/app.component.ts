@@ -5,6 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { environment } from 'environments/environment';
 import { AppState } from './app.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 /**
  * App Component
@@ -16,50 +17,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: [
     './app.component.css'
   ],
-  template: `
-    <nav>
-      <a [routerLink]=" ['./'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
-         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        DevModule
-      </a>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-      <button (click)="testHttpInterceptor()">test http interceptor</button>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>Angular Starter by <a [href]="twitter">@gdi2290</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="tipe" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   public name = 'Angular Starter';
@@ -71,6 +29,7 @@ export class AppComponent implements OnInit {
   constructor(
     public appState: AppState,
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   public ngOnInit() {
@@ -79,6 +38,10 @@ export class AppComponent implements OnInit {
 
   testHttpInterceptor() {
     this.http.get('test').subscribe();
+  }
+
+  clickAbout = () => {
+    this.router.navigate(['/', { outlets: { header: null }}]);
   }
 
 }

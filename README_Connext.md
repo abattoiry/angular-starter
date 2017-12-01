@@ -1,37 +1,33 @@
-# Angular4 Scaffolding for Connext
+Angular4 Scaffolding for Connext
 
-- [Angular4 Scaffolding for Connext](#angular4-scaffolding-for-connext)
-  - [Overview](#overview)
-  - [Prerequisites](#prerequisites)
-    - [Keep your folk synced](#keep-your-folk-synced)
-  - [Modules](#modules)
-    - [Authorization](#authorization)
-      - [File Structure](#file-structure)
-      - [AccountService(account.service.ts)](#accountserviceaccountservicets)
-      - [AuthService(auth.service.ts)](#authserviceauthservicets)
-      - [AuthInterceptor(auth.interceptor.ts)](#authinterceptorauthinterceptorts)
-      - [UserRouteAccessService(user-route-access-service.ts)](#userrouteaccessserviceuser-route-access-servicets)
-    - [Global](#global)
-      - [File Structure](#file-structure)
-      - [GlobalInterceptor(global.interceptor.ts)](#globalinterceptorglobalinterceptorts)
-      - [GlobalService(global.service.ts)](#globalserviceglobalservicets)
-    - [Components](#components)
-      - [File Structure](#file-structure)
-      - [atoms(Folder)](#atomsfolder)
-      - [molecules(Folder)](#moleculesfolder)
-      - [organisms(Folder)](#organismsfolder)
-    - [Styles](#styles)
-      - [File Structure](#file-structure)
-      - [Styles(styles.scss)](#stylesstylesscss)
-      - [Variables(_variables.scss)](#variablesvariablesscss)
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+  - [Keep your folk synced](#keep-your-folk-synced)
+- [Modules](#modules)
+  - [Authorization](#authorization)
+    - [AccountService(account.service.ts)](#accountserviceaccountservicets)
+    - [AuthService(auth.service.ts)](#authserviceauthservicets)
+    - [AuthInterceptor(auth.interceptor.ts)](#authinterceptorauthinterceptorts)
+    - [UserRouteAccessService(user-route-access-service.ts)](#userrouteaccessserviceuser-route-access-servicets)
+  - [Global](#global)
+    - [GlobalInterceptor(global.interceptor.ts)](#globalinterceptorglobalinterceptorts)
+    - [GlobalService(global.service.ts)](#globalserviceglobalservicets)
+  - [Components](#components)
+    - [atoms(Folder)](#atomsfolder)
+    - [molecules(Folder)](#moleculesfolder)
+    - [organisms(Folder)](#organismsfolder)
+  - [Styles](#styles)
+    - [Styles(styles.scss)](#stylesstylesscss)
+    - [Variables(_variables.scss)](#variablesvariablesscss)
+  - [Multi Routable Components(TBD)](#multi-routable-componentstbd)
 
-## Overview
+# Overview
 
 This Scaffolding is made for Connext, which provides the generic foundation for most Angualr4 projects. It is built based on [Angular Webpack Starter](https://github.com/gdi2290/angular-starter#quick-start), please learn all the basics, such as fork, install and build there. Be aware to replace the original Git URL with current Git URL.
 
-## Prerequisites
+# Prerequisites
 
-### Keep your folk synced
+## Keep your folk synced
 
 After you folk and create a local clone of your folk, you need to configure Git to sync your folk with this repository.
 
@@ -49,11 +45,9 @@ git remote add upstream https://github.com/abattoiry/angular-starter
 git remote -v
 ```
 
-## Modules
+# Modules
 
-### Authorization
-
-#### File Structure
+## Authorization
 
 ```bash
 angular-starter
@@ -72,19 +66,19 @@ angular-starter
 │               └── shared.module.ts
 ```
 
-#### AccountService(account.service.ts)
+### AccountService(account.service.ts)
 
 AccountService provides functions related to account, such as get and update user info.
 
-#### AuthService(auth.service.ts)
+### AuthService(auth.service.ts)
 
 AuthService provides functions releted to Auth, such as login, logout.
 
-#### AuthInterceptor(auth.interceptor.ts)
+### AuthInterceptor(auth.interceptor.ts)
 
 AuthInterceptor intercepts every request and inject authorization info into it's header.
 
-#### UserRouteAccessService(user-route-access-service.ts)
+### UserRouteAccessService(user-route-access-service.ts)
 
 UserRouteAccessService is used in every .routes.ts file, to provide required "canActive" service. For example:
 
@@ -101,9 +95,7 @@ export const routes = [
 ];
 </pre>
 
-### Global
-
-#### File Structure
+## Global
 
 ```bash
 angular-starter
@@ -114,19 +106,17 @@ angular-starter
 │               └── global.service.ts
 ```
 
-#### GlobalInterceptor(global.interceptor.ts)
+### GlobalInterceptor(global.interceptor.ts)
 
 GlobalInterceptor intercepts and manufactures every request, such as insert origin url.
 
-#### GlobalService(global.service.ts)
+### GlobalService(global.service.ts)
 
 GlobalService consist of many utility functions that can be used globally, such as download file, key value pair. Feel free to add more functions.
 
-### Components
+## Components
 
 Components module contains many cutomized component, inspired by [Atomic Design](http://atomicdesign.bradfrost.com/table-of-contents/).
-
-#### File Structure
 
 ```bash
 angular-starter
@@ -152,24 +142,22 @@ angular-starter
 │                     └── organisms.module.ts
 ```
 
-#### atoms(Folder)
+### atoms(Folder)
 
 In the words of Brad Frost:
 > If atoms are the basic building blocks of matter, then the atoms of our interfaces serve as the foundational building blocks that comprise all our user interfaces. These atoms include basic HTML elements like form labels, inputs, buttons, and others that can’t be broken down any further without ceasing to be functional.
 
-#### molecules(Folder)
+### molecules(Folder)
 
 In the words of Brad Frost:
 > In interfaces, molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search input, and button can join together to create a search form molecule.
 
-#### organisms(Folder)
+### organisms(Folder)
 
 In the words of Brad Frost:
 > Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms. These organisms form distinct sections of an interface.
 
-### Styles
-
-#### File Structure
+## Styles
 
 ```bash
 angular-starter
@@ -180,10 +168,36 @@ angular-starter
 │           └── styles.scss
 ```
 
-#### Styles(styles.scss)
+### Styles(styles.scss)
 
 Global styles.
 
-#### Variables(_variables.scss)
+### Variables(_variables.scss)
 
 Variables of global styles.
+
+## Multi Routable Components(TBD)
+
+Angular 4 named outlets feature doesn't work well in current version, however it's very powerful. So hope they will fix it someday.
+
+For now there is one named outlet made for global header in this project.
+
+```bash
+angular-starter
+│   └── src
+│       └── app
+│           └── headers
+│               ├── default-header
+│               │   ├── header.component.html
+│               │   ├── header.component.ts
+│               │   └── header.scss
+│               ├── empty-header.component.ts
+│               ├── headers.module.ts
+│               └── headers.routes.ts
+```
+
+You can find the outlet defined in _app.component.html_.
+
+```javascript
+<router-outlet name="header"></router-outlet>
+```
